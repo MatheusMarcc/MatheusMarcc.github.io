@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Matheus Marc Guichard</title>
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://matheusmarcc.github.io/">
+<meta property="og:title" content="Matheus Marc Guichard">
+<meta property="og:description" content="Pesquisa em inteligência artificial e aprendizado estatístico: ranqueamento neural, modelos de linguagem e modelagem estatística.">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#0c0c0e">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230c0c0e'/%3E%3Crect x='14' y='46' width='36' height='3' fill='%23b3121f'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Georgia,serif' font-size='30' font-weight='700' fill='%23ecebe8'%3EMG%3C/text%3E%3C/svg%3E">
+<meta name="description" content="Matheus Marc Guichard: pesquisa em recuperação de informação, LLMs e estatística aplicada.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: a research dossier. Label rail on the left, content on the right, hairline rules,
+   red used only as a thin accent. Single dark look by design. */
+:root {
+  --ink: #0c0c0e;         /* page ground */
+  --carbon: #141417;      /* panels */
+  --graphite: #2a2a30;    /* hairlines */
+  --ash: #9a99a1;         /* secondary text */
+  --paper: #ecebe8;       /* primary text */
+  --paper-dim: #c9c8c4;   /* running text */
+  --oxblood: #3e0a0e;     /* gradient depth */
+  --signal: #b3121f;      /* rules and the EJA line */
+  --signal-text: #e0545e; /* red legible as small text */
+
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --rail: 12rem;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* language switch: Portuguese shows by default, before any script runs */
+:root:not([data-lang="en"]) .en { display: none !important; }
+:root[data-lang="en"] .pt { display: none !important; }
+
+a { color: inherit; }
+:focus-visible { outline: 1px solid var(--signal-text); outline-offset: 3px; }
+::selection { background: var(--signal); color: var(--paper); }
+
+.wrap {
+  max-width: 1120px;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ash);
+}
+
+/* ---------- header ---------- */
+.top { border-bottom: 1px solid var(--graphite); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 14px 24px; flex-wrap: wrap; padding-block: 18px; }
+.name-mark { font-family: var(--font-display); font-weight: 600; font-size: 1.02rem; letter-spacing: .01em; text-decoration: none; }
+.top-right { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.nav { display: flex; gap: 6px 22px; flex-wrap: wrap; font-size: .86rem; color: var(--ash); }
+.nav a { text-decoration: none; transition: color .2s; }
+.nav a:hover { color: var(--paper); }
+.lang { display: inline-flex; border: 1px solid var(--graphite); }
+.lang button {
+  background: transparent; color: var(--ash); border: 0; cursor: pointer;
+  font-family: var(--font-mono); font-size: .66rem; letter-spacing: .14em; padding: 7px 10px; font-weight: 500;
+}
+.lang button[aria-pressed="true"] { background: var(--paper); color: var(--ink); }
+
+/* ---------- hero ---------- */
+.hero {
+  border-bottom: 1px solid var(--graphite);
+  background:
+    radial-gradient(52rem 26rem at 92% -20%, color-mix(in srgb, var(--oxblood) 85%, transparent), transparent 65%),
+    linear-gradient(180deg, var(--carbon), var(--ink));
+}
+.hero .wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: clamp(32px, 6vw, 80px);
+  align-items: start;
+  padding-block: clamp(52px, 8vw, 104px) clamp(44px, 6vw, 80px);
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.6rem, 6.2vw, 4.9rem);
+  line-height: 1.02;
+  letter-spacing: -.02em;
+  margin: 18px 0 22px;
+  text-wrap: balance;
+}
+.accent-rule { width: 56px; height: 2px; background: var(--signal); }
+.lead { max-width: 52ch; margin: 22px 0 0; font-size: 1.12rem; color: var(--paper-dim); }
+.cta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 30px; }
+.btn {
+  font-size: .86rem; font-weight: 500; text-decoration: none;
+  padding: 11px 18px; border: 1px solid var(--graphite); color: var(--paper);
+  transition: border-color .2s, background-color .2s, color .2s;
+}
+.btn:hover { border-color: var(--ash); }
+.btn.solid { background: var(--paper); border-color: var(--paper); color: var(--ink); }
+.btn.solid:hover { background: var(--paper-dim); border-color: var(--paper-dim); }
+
+.summary { margin: 0; border-top: 1px solid var(--graphite); font-size: .93rem; }
+.summary > div { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 14px; padding-block: 12px; border-bottom: 1px solid var(--graphite); }
+.summary dt { padding-top: 3px; }
+.summary dd { margin: 0; color: var(--paper); }
+.summary-title { margin: 6px 0 12px; }
+
+/* ---------- sections ---------- */
+.section { border-bottom: 1px solid var(--graphite); }
+.section > .wrap {
+  display: grid; grid-template-columns: var(--rail) minmax(0, 1fr);
+  gap: clamp(24px, 5vw, 64px); padding-block: clamp(56px, 8vw, 96px);
+}
+.rail .label { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 28px); display: block; }
+.rail .label::before { content: ""; display: block; width: 24px; height: 2px; background: var(--signal); margin-bottom: 12px; }
+.section h2 {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(1.8rem, 3.4vw, 2.5rem); line-height: 1.12; letter-spacing: -.01em;
+  margin: 0 0 .8em; text-wrap: balance; max-width: 22ch;
+}
+.prose p { max-width: 64ch; margin: 0 0 1.1em; color: var(--paper-dim); font-size: 1.04rem; }
+.prose p:last-child { margin-bottom: 0; }
+
+/* ---------- research ---------- */
+.entry { border-top: 1px solid var(--graphite); padding-block: 30px 34px; }
+.entry:last-child { padding-bottom: 0; }
+.entry h3 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.35rem, 2.3vw, 1.7rem); line-height: 1.2; margin: 0; text-wrap: balance; max-width: 30ch; }
+.meta { display: flex; gap: 8px 18px; flex-wrap: wrap; align-items: center; margin-top: 10px; }
+.status { padding: 3px 8px; border: 1px solid var(--graphite); }
+.status.live { color: var(--signal-text); border-color: color-mix(in srgb, var(--signal) 70%, transparent); }
+.facts { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 14px; }
+.facts li { display: grid; grid-template-columns: 10.5rem minmax(0, 1fr); gap: 18px; }
+.facts .label { padding-top: 4px; color: var(--paper); }
+.facts span.txt { color: var(--paper-dim); max-width: 66ch; }
+.repo { display: inline-block; margin-top: 22px; font-size: .88rem; font-weight: 500; text-decoration: none; border-bottom: 1px solid var(--signal); padding-bottom: 2px; }
+
+.findings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--graphite); margin-top: 30px; background: var(--carbon); }
+.finding { padding: 20px 22px 22px; border-right: 1px solid var(--graphite); min-width: 0; }
+.finding:last-child { border-right: 0; }
+.finding .num { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.7rem, 3vw, 2.2rem); line-height: 1.05; color: var(--paper); }
+.finding .num.red { color: var(--signal-text); }
+.finding p { margin: 10px 0 0; font-size: .9rem; color: var(--ash); }
+.note { margin: 14px 0 0; font-size: .92rem; color: var(--ash); }
+
+.figure { margin: 34px 0 0; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 18px 28px; align-items: start; }
+.fig-title { grid-column: 1 / -1; margin: 0; }
+.figure svg { width: 100%; height: auto; display: block; }
+.km .grid line { stroke: var(--graphite); stroke-width: 1; }
+.km .axis text, .km .lbl { font-family: var(--font-mono); font-size: 11px; fill: var(--ash); }
+.km .lbl { font-size: 11.5px; }
+.km .lbl.integral { fill: var(--paper); }
+.km .lbl.eja { fill: var(--signal-text); }
+.km .s path { fill: none; stroke: var(--ash); stroke-opacity: .4; stroke-width: 1.4; transition: stroke-opacity .2s, stroke-width .2s; }
+.km .s circle { fill: var(--ash); fill-opacity: 0; transition: fill-opacity .2s; }
+.km .s.integral path { stroke: var(--paper); stroke-opacity: .95; stroke-width: 1.8; }
+.km .s.total path { stroke: var(--paper); stroke-opacity: .6; stroke-dasharray: 4 4; }
+.km .s.eja path { stroke: var(--signal); stroke-opacity: 1; stroke-width: 2.4; }
+.km .s.integral circle { fill: var(--paper); fill-opacity: 1; }
+.km .s.eja circle { fill: var(--signal); fill-opacity: 1; }
+.km.has-hl .s path { stroke-opacity: .12; }
+.km.has-hl .s.is-hl path { stroke-opacity: 1; stroke-width: 2.4; }
+.km.has-hl .s.is-hl circle { fill-opacity: 1; }
+.table-scroll { overflow-x: auto; min-width: 0; }
+.km-table { width: 100%; border-collapse: collapse; font-size: .8rem; font-variant-numeric: tabular-nums; }
+.km-table th, .km-table td { padding: 7px 6px; border-bottom: 1px solid var(--graphite); text-align: right; white-space: nowrap; }
+.km-table th { font-family: var(--font-mono); font-weight: 500; font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ash); vertical-align: bottom; white-space: normal; }
+.km-table th:first-child, .km-table td:first-child { text-align: left; white-space: normal; }
+.km-table td { color: var(--paper-dim); }
+.km-table tr[data-k] { cursor: default; }
+.km-table tr[data-k]:focus-visible { outline-offset: -1px; }
+.km-table tr.is-hl td { color: var(--paper); background: var(--carbon); }
+.km-table tr[data-k="eja"] td:first-child { color: var(--signal-text); }
+.figure figcaption { grid-column: 1 / -1; font-size: .82rem; color: var(--ash); }
+
+/* ---------- projects ---------- */
+.ledger { border-top: 1px solid var(--graphite); }
+.row { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) auto; gap: 12px 32px; padding-block: 26px; border-bottom: 1px solid var(--graphite); }
+.row > * { min-width: 0; }
+.row h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.3rem; line-height: 1.2; margin: 0 0 6px; text-wrap: balance; }
+.row .label.kind { color: var(--signal-text); }
+.row p { margin: 0; color: var(--paper-dim); max-width: 66ch; }
+.stack { margin-top: 12px; }
+.links { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.links a { font-size: .86rem; font-weight: 500; text-decoration: none; border-bottom: 1px solid var(--graphite); padding-bottom: 2px; white-space: nowrap; transition: border-color .2s; }
+.links a:hover, .repo:hover { border-color: var(--signal); }
+
+/* ---------- skills ---------- */
+.skills { margin: 0; border-top: 1px solid var(--graphite); }
+.skills > div { display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: 6px 24px; padding-block: 16px; border-bottom: 1px solid var(--graphite); }
+.skills dt { padding-top: 3px; color: var(--paper); }
+.skills dd { margin: 0; color: var(--paper-dim); }
+.skills .sep { color: var(--graphite); }
+
+/* ---------- contact ---------- */
+.contact p.intro { color: var(--paper-dim); margin: 0 0 22px; max-width: 52ch; }
+.contact dl { margin: 0; border-top: 1px solid var(--graphite); max-width: 40rem; }
+.contact dl > div { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 6px 20px; padding-block: 14px; border-bottom: 1px solid var(--graphite); align-items: center; }
+.contact dt { padding-top: 2px; }
+.contact dd { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; min-width: 0; }
+.contact dd a { text-decoration: none; border-bottom: 1px solid var(--graphite); }
+.contact dd a:hover { border-color: var(--signal); }
+.email { overflow-wrap: anywhere; min-width: 0; user-select: all; }
+.copy {
+  font-family: var(--font-mono); font-size: .64rem; letter-spacing: .14em; text-transform: uppercase;
+  background: transparent; color: var(--paper); border: 1px solid var(--graphite); padding: 6px 10px; cursor: pointer;
+}
+.copy:hover { border-color: var(--ash); }
+.copy .ok-label { display: none; }
+.copy.ok .def-label { display: none; }
+.copy.ok .ok-label { display: inline; color: var(--signal-text); }
+
+/* ---------- footer ---------- */
+.foot .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-block: 26px; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 920px) {
+  .hero .wrap { grid-template-columns: minmax(0, 1fr); }
+  .section > .wrap { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .rail .label { position: static; }
+  .figure { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 760px) {
+  .row { grid-template-columns: minmax(0, 1fr); }
+  .links { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 8px 18px; }
+  .findings { grid-template-columns: minmax(0, 1fr); }
+  .finding { border-right: 0; border-bottom: 1px solid var(--graphite); }
+  .finding:last-child { border-bottom: 0; }
+  .skills > div { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 620px) {
+  .facts li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .nav { display: none; }
+  .summary > div, .contact dl > div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+</style>
+<style>
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="name-mark" href="#perfil">Matheus Marc Guichard</a>
+    <div class="top-right">
+      <nav class="nav" aria-label="Seções">
+        <a href="#perfil"><span class="pt">Perfil</span><span class="en">Profile</span></a>
+        <a href="#pesquisa"><span class="pt">Pesquisa</span><span class="en">Research</span></a>
+        <a href="#projetos"><span class="pt">Projetos</span><span class="en">Projects</span></a>
+        <a href="#competencias"><span class="pt">Competências</span><span class="en">Skills</span></a>
+        <a href="#contato"><span class="pt">Contato</span><span class="en">Contact</span></a>
+      </nav>
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <button type="button" id="lang-pt" data-set-lang="pt" aria-pressed="true">PT</button>
+        <button type="button" id="lang-en" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="label">
+        <span class="pt">Ciência da Computação · Instituto Federal de Goiás</span>
+        <span class="en">Computer Science · Instituto Federal de Goiás</span>
+      </p>
+      <h1>Matheus Marc Guichard</h1>
+      <div class="accent-rule" aria-hidden="true"></div>
+      <p class="lead">
+        <span class="pt">Pesquisa em inteligência artificial e aprendizado estatístico: ranqueamento neural, modelos de linguagem e modelagem estatística.</span>
+        <span class="en">Research in artificial intelligence and statistical learning: neural ranking, language models and statistical modeling.</span>
+      </p>
+      <div class="cta">
+        <a class="btn solid" href="#projetos"><span class="pt">Ver projetos</span><span class="en">View projects</span></a>
+        <a class="btn" href="https://github.com/MatheusMarcc" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://linkedin.com/in/matheusmarcguichard" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div>
+      <p class="label summary-title"><span class="pt">Resumo</span><span class="en">Summary</span></p>
+      <dl class="summary">
+        <div>
+          <dt class="label"><span class="pt">Formação</span><span class="en">Education</span></dt>
+          <dd><span class="pt">Bacharelado em Ciência da Computação, IFG</span><span class="en">B.Sc. in Computer Science, IFG</span></dd>
+        </div>
+        <div>
+          <dt class="label"><span class="pt">Pesquisa</span><span class="en">Research</span></dt>
+          <dd><span class="pt">Ranqueamento neural sensível ao risco para RAG · Modelagem de sobrevivência da evasão estudantil</span><span class="en">Risk-sensitive neural ranking for RAG · Survival modeling of student dropout</span></dd>
+        </div>
+        <div>
+          <dt class="label"><span class="pt">Áreas</span><span class="en">Areas</span></dt>
+          <dd><span class="pt">RAG · LLMs · Learning to Rank · Aprendizado estatístico</span><span class="en">RAG · LLMs · Learning to rank · Statistical learning</span></dd>
+        </div>
+        <div>
+          <dt class="label">Stack</dt>
+          <dd>Python · PyTorch · Hugging Face · R · SQL</dd>
+        </div>
+        <div>
+          <dt class="label"><span class="pt">Idiomas</span><span class="en">Languages</span></dt>
+          <dd><span class="pt">Inglês B2 · Francês A2</span><span class="en">English B2 · French A2</span></dd>
+        </div>
+        <div class="en">
+          <dt class="label">Citizenship</dt>
+          <dd>EU</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<main>
+  <section class="section" id="perfil">
+    <div class="wrap">
+      <div class="rail"><span class="label"><span class="pt">Perfil</span><span class="en">Profile</span></span></div>
+      <div>
+        <h2><span class="pt">IA e aprendizado estatístico</span><span class="en">AI and statistical learning</span></h2>
+        <div class="prose">
+          <p class="pt">Estudo Ciência da Computação no Instituto Federal de Goiás e pesquiso IA e aprendizado estatístico. No projeto atual, modelo uma função de perda adaptativa para ranqueamento neural, que ajusta a própria superfície de otimização durante o treino para penalizar falhas graves em vez de otimizar só a média, e desenvolvo uma taxonomia de erros para sistemas RAG, com experimentos em LLMs e fine-tuning por SFT e DPO.</p>
+          <p class="en">I study Computer Science at Instituto Federal de Goiás and do research in AI and statistical learning. In my current project I am modeling an adaptive loss function for neural ranking, which adjusts its own optimization surface during training to penalize severe failures instead of optimizing only the average, and developing an error taxonomy for RAG systems, with experiments on LLMs and SFT and DPO fine-tuning.</p>
+          <p class="pt">Minha base é quantitativa: modelei a evasão estudantil do IFG com análise de sobrevivência, com modelos paramétricos, regressão de Cox e validação temporal, e desenvolvo projetos de machine learning, NLP e finanças quantitativas, da otimização de carteiras à simulação Monte Carlo.</p>
+          <p class="en">My background is quantitative: I modeled student dropout at IFG with survival analysis, using parametric models, Cox regression and temporal validation, and I build machine learning, NLP and quantitative finance projects, from portfolio optimization to Monte Carlo simulation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pesquisa">
+    <div class="wrap">
+      <div class="rail"><span class="label"><span class="pt">Pesquisa</span><span class="en">Research</span></span></div>
+      <div>
+        <h2><span class="pt">IA e modelagem estatística</span><span class="en">AI and statistical modeling</span></h2>
+
+        <article class="entry">
+          <h3><span class="pt">Ranqueamento Neural Sensível ao Risco para RAG</span><span class="en">Risk-Sensitive Neural Ranking for RAG</span></h3>
+          <div class="meta">
+            <span class="label"><span class="pt">Iniciação Científica · CNPq</span><span class="en">Undergraduate research · CNPq</span></span>
+            <span class="label"><span class="pt">09/2026 – presente</span><span class="en">Sep 2026 – present</span></span>
+            <span class="label status live"><span class="pt">Em andamento</span><span class="en">Ongoing</span></span>
+          </div>
+          <ul class="facts">
+            <li><span class="label">Learning to Rank</span>
+              <span class="txt"><span class="pt">Modelagem de uma função de perda adaptativa para ranqueamento neural, que ajusta a própria superfície de otimização durante o treino para penalizar falhas graves em consultas difíceis, com avaliação por NDCG, MAP, URisk e GeoRisk.</span><span class="en">Modeling an adaptive loss function for neural ranking that adjusts its own optimization surface during training to penalize severe failures on hard queries, evaluated with NDCG, MAP, URisk and GeoRisk.</span></span></li>
+            <li><span class="label"><span class="pt">RAG agêntico</span><span class="en">Agentic RAG</span></span>
+              <span class="txt"><span class="pt">Experimentação com RAG-Critic (ACL 2025) e DynaKRAG (2026), métodos do estado da arte, em HotpotQA, 2WikiMultiHopQA, MuSiQue, Natural Questions e TriviaQA, com avaliação por Exact Match, F1 e custo em tokens.</span><span class="en">Experiments with RAG-Critic (ACL 2025) and DynaKRAG (2026), state-of-the-art methods, on HotpotQA, 2WikiMultiHopQA, MuSiQue, Natural Questions and TriviaQA, evaluated by Exact Match, F1 and token cost.</span></span></li>
+            <li><span class="label"><span class="pt">Taxonomia de erros</span><span class="en">Error taxonomy</span></span>
+              <span class="txt"><span class="pt">Desenvolvimento de uma taxonomia de erros de RAG que diagnostica deficiências do contexto recuperado: evidência ausente, cobertura incompleta, conflito e distratores.</span><span class="en">Developing a taxonomy of RAG errors that diagnoses deficiencies in the retrieved context: missing evidence, incomplete coverage, conflict and distractors.</span></span></li>
+            <li><span class="label">Fine-tuning</span>
+              <span class="txt"><span class="pt">Pipeline de SFT e DPO com LoRA e QLoRA para treinar o LLM crítico, com Hugging Face TRL e PEFT.</span><span class="en">SFT and DPO pipeline with LoRA and QLoRA to train the critic LLM, built on Hugging Face TRL and PEFT.</span></span></li>
+            <li><span class="label"><span class="pt">Engenharia</span><span class="en">Engineering</span></span>
+              <span class="txt"><span class="pt">Framework de experimentação com CLI, cache de chamadas ao LLM, execução retomável e testes automatizados.</span><span class="en">Experiment framework with a CLI, LLM call caching, resumable runs and automated tests.</span></span></li>
+          </ul>
+          <a class="repo" href="https://github.com/MatheusMarcc/DynaCKRAG" target="_blank" rel="noopener"><span class="pt">Código no GitHub</span><span class="en">Code on GitHub</span></a>
+        </article>
+
+        <article class="entry">
+          <h3><span class="pt">Modelagem de Sobrevivência da Evasão Estudantil</span><span class="en">Survival Modeling of Student Dropout</span></h3>
+          <div class="meta">
+            <span class="label"><span class="pt">Iniciação Científica · CNPq</span><span class="en">Undergraduate research · CNPq</span></span>
+            <span class="label"><span class="pt">09/2025 – 09/2026</span><span class="en">Sep 2025 – Sep 2026</span></span>
+            <span class="label status"><span class="pt">Concluída</span><span class="en">Completed</span></span>
+          </div>
+          <ul class="facts">
+            <li><span class="label"><span class="pt">Dados</span><span class="en">Data</span></span>
+              <span class="txt"><span class="pt">3.600 matrículas de 2014 a 2024 do sistema acadêmico do IFG, com definição de evento e censura, limpeza de inconsistências e recodificação das variáveis de ingresso.</span><span class="en">3,600 enrollments from 2014 to 2024 from IFG's academic records, with event and censoring definitions, cleaning of inconsistent records and recoding of admission variables.</span></span></li>
+            <li><span class="label"><span class="pt">Modelos</span><span class="en">Models</span></span>
+              <span class="txt"><span class="pt">Kaplan–Meier por curso e modelos exponencial, Weibull, log-normal, log-logístico e gama generalizada, comparados por AIC e teste da razão de verossimilhanças.</span><span class="en">Kaplan–Meier per program plus exponential, Weibull, log-normal, log-logistic and generalized gamma models, compared by AIC and likelihood-ratio tests.</span></span></li>
+            <li><span class="label"><span class="pt">Regressão de Cox</span><span class="en">Cox regression</span></span>
+              <span class="txt"><span class="pt">Fatores associados à evasão, com variância robusta agrupada por estudante e checagem de riscos proporcionais por resíduos de Schoenfeld.</span><span class="en">Factors associated with dropout, with robust variance clustered by student and proportional-hazards checks via Schoenfeld residuals.</span></span></li>
+            <li><span class="label"><span class="pt">Validação</span><span class="en">Validation</span></span>
+              <span class="txt"><span class="pt">C-index em validação cruzada de 5 partes, validação temporal (ajuste em 2014–2019, teste em 2020–2024), calibração por faixas de risco e análise de sensibilidade.</span><span class="en">C-index in 5-fold cross-validation, temporal validation (fit on 2014–2019, tested on 2020–2024), calibration by risk band and sensitivity analysis.</span></span></li>
+          </ul>
+
+          <div class="findings">
+            <div class="finding">
+              <div class="num"><span class="pt">2º semestre</span><span class="en">2nd semester</span></div>
+              <p><span class="pt">Pico da evasão nos cursos superiores, quando saem de 17% a 31% dos matriculados.</span><span class="en">Dropout peak in undergraduate programs, when 17% to 31% of enrolled students leave.</span></p>
+            </div>
+            <div class="finding">
+              <div class="num red"><span class="pt">2,84×</span><span class="en">2.84×</span></div>
+              <p><span class="pt">Risco de evasão na EJA frente ao técnico integrado de tempo integral (IC 95%: 2,47–3,27).</span><span class="en">Dropout hazard in the adult-education track versus the full-time integrated technical track (95% CI 2.47–3.27).</span></p>
+            </div>
+            <div class="finding">
+              <div class="num"><span class="pt">74%</span><span class="en">74%</span></div>
+              <p><span class="pt">Das matrículas da EJA terminaram em evasão, contra 33% no técnico de tempo integral.</span><span class="en">Of adult-education enrollments ended in dropout, against 33% in the full-time technical track.</span></p>
+            </div>
+          </div>
+          <p class="note"><span class="pt">Não houve evidência de que estudantes cotistas evadam mais.</span><span class="en">There was no evidence that quota students drop out more.</span></p>
+
+          <figure class="figure">
+            <p class="label fig-title"><span class="pt">Probabilidade de seguir sem evadir · Kaplan–Meier</span><span class="en">Probability of not having dropped out · Kaplan–Meier</span></p>
+            <svg class="km" viewBox="0 0 560 300" role="img" aria-labelledby="km-title">
+<title id="km-title">Kaplan–Meier: S(t) por curso nos marcos do curso</title>
+<g class="grid">
+<line x1="50" x2="476.0" y1="256.0" y2="256.0"/>
+<line x1="50" x2="476.0" y1="196.0" y2="196.0"/>
+<line x1="50" x2="476.0" y1="136.0" y2="136.0"/>
+<line x1="50" x2="476.0" y1="76.0" y2="76.0"/>
+<line x1="50" x2="476.0" y1="16.0" y2="16.0"/>
+</g><g class="axis">
+<text x="40" y="260.0" text-anchor="end">0%</text>
+<text x="40" y="200.0" text-anchor="end">25%</text>
+<text x="40" y="140.0" text-anchor="end">50%</text>
+<text x="40" y="80.0" text-anchor="end">75%</text>
+<text x="40" y="20.0" text-anchor="end">100%</text>
+<text class="pt" x="46.0" y="284" text-anchor="start">Ingresso</text>
+<text class="en" x="46.0" y="284" text-anchor="start">Entry</text>
+<text class="pt" x="192.0" y="284" text-anchor="middle">1º ano</text>
+<text class="en" x="192.0" y="284" text-anchor="middle">Year 1</text>
+<text class="pt" x="334.0" y="284" text-anchor="middle">Duração regular</text>
+<text class="en" x="334.0" y="284" text-anchor="middle">Regular length</text>
+<text class="pt" x="480.0" y="284" text-anchor="end">Prazo máximo</text>
+<text class="en" x="480.0" y="284" text-anchor="end">Maximum time</text>
+</g>
+<g class="s cc" data-k="cc"><path d="M50.0 16.0 L192.0 77.2 L334.0 153.5 L476.0 212.6"/><circle cx="192.0" cy="77.2" r="2.6"/><circle cx="334.0" cy="153.5" r="2.6"/><circle cx="476.0" cy="212.6" r="2.6"/></g>
+<g class="s civil" data-k="civil"><path d="M50.0 16.0 L192.0 76.2 L334.0 158.1 L476.0 201.3"/><circle cx="192.0" cy="76.2" r="2.6"/><circle cx="334.0" cy="158.1" r="2.6"/><circle cx="476.0" cy="201.3" r="2.6"/></g>
+<g class="s soc" data-k="soc"><path d="M50.0 16.0 L192.0 114.9 L334.0 189.5 L476.0 217.6"/><circle cx="192.0" cy="114.9" r="2.6"/><circle cx="334.0" cy="189.5" r="2.6"/><circle cx="476.0" cy="217.6" r="2.6"/></g>
+<g class="s quim" data-k="quim"><path d="M50.0 16.0 L192.0 94.7 L334.0 176.8 L476.0 223.4"/><circle cx="192.0" cy="94.7" r="2.6"/><circle cx="334.0" cy="176.8" r="2.6"/><circle cx="476.0" cy="223.4" r="2.6"/></g>
+<g class="s log" data-k="log"><path d="M50.0 16.0 L192.0 89.0 L334.0 143.9 L476.0 192.9"/><circle cx="192.0" cy="89.0" r="2.6"/><circle cx="334.0" cy="143.9" r="2.6"/><circle cx="476.0" cy="192.9" r="2.6"/></g>
+<g class="s total" data-k="total"><path d="M50.0 16.0 L192.0 73.4 L334.0 144.9 L476.0 204.4"/><circle cx="192.0" cy="73.4" r="2.6"/><circle cx="334.0" cy="144.9" r="2.6"/><circle cx="476.0" cy="204.4" r="2.6"/></g>
+<g class="s integral" data-k="integral"><path d="M50.0 16.0 L192.0 46.0 L334.0 87.5 L476.0 159.3"/><circle cx="192.0" cy="46.0" r="2.6"/><circle cx="334.0" cy="87.5" r="2.6"/><circle cx="476.0" cy="159.3" r="2.6"/></g>
+<g class="s eja" data-k="eja"><path d="M50.0 16.0 L192.0 68.6 L334.0 184.2 L476.0 233.0"/><circle cx="192.0" cy="68.6" r="2.6"/><circle cx="334.0" cy="184.2" r="2.6"/><circle cx="476.0" cy="233.0" r="2.6"/></g>
+<text class="lbl integral pt" x="486.0" y="163.3">Integral</text>
+<text class="lbl integral en" x="486.0" y="163.3">Full-time</text>
+<text class="lbl total pt" x="486.0" y="208.4">Total</text>
+<text class="lbl total en" x="486.0" y="208.4">All</text>
+<text class="lbl eja pt" x="486.0" y="237.0">EJA</text>
+<text class="lbl eja en" x="486.0" y="237.0">EJA</text>
+</svg>
+            <div class="table-scroll">
+              <table class="km-table">
+<thead><tr><th><span class="pt">Curso</span><span class="en">Program</span></th><th><span class="pt">1º ano</span><span class="en">Year 1</span></th><th><span class="pt">Duração regular</span><span class="en">Regular length</span></th><th><span class="pt">Prazo máximo</span><span class="en">Maximum time</span></th></tr></thead><tbody>
+<tr data-k="integral" tabindex="0"><td><span class="pt">Téc. integrado (tempo integral)</span><span class="en">Integrated technical (full-time)</span></td><td><span class="pt">87,5%</span><span class="en">87.5%</span></td><td><span class="pt">70,2%</span><span class="en">70.2%</span></td><td><span class="pt">40,3%</span><span class="en">40.3%</span></td></tr>
+<tr data-k="eja" tabindex="0"><td><span class="pt">Téc. integrado (EJA)</span><span class="en">Integrated technical (adult ed., EJA)</span></td><td><span class="pt">78,1%</span><span class="en">78.1%</span></td><td><span class="pt">29,9%</span><span class="en">29.9%</span></td><td><span class="pt">9,6%</span><span class="en">9.6%</span></td></tr>
+<tr data-k="cc" tabindex="0"><td><span class="pt">Bach. Ciência da Computação</span><span class="en">B.Sc. Computer Science</span></td><td><span class="pt">74,5%</span><span class="en">74.5%</span></td><td><span class="pt">42,7%</span><span class="en">42.7%</span></td><td><span class="pt">18,1%</span><span class="en">18.1%</span></td></tr>
+<tr data-k="civil" tabindex="0"><td><span class="pt">Bach. Eng. Civil da Mobilidade</span><span class="en">B.Eng. Civil Engineering (Mobility)</span></td><td><span class="pt">74,9%</span><span class="en">74.9%</span></td><td><span class="pt">40,8%</span><span class="en">40.8%</span></td><td><span class="pt">22,8%</span><span class="en">22.8%</span></td></tr>
+<tr data-k="soc" tabindex="0"><td><span class="pt">Lic. Ciências Sociais</span><span class="en">Social Sciences (teaching)</span></td><td><span class="pt">58,8%</span><span class="en">58.8%</span></td><td><span class="pt">27,7%</span><span class="en">27.7%</span></td><td><span class="pt">16,0%</span><span class="en">16.0%</span></td></tr>
+<tr data-k="quim" tabindex="0"><td><span class="pt">Lic. Química</span><span class="en">Chemistry (teaching)</span></td><td><span class="pt">67,2%</span><span class="en">67.2%</span></td><td><span class="pt">33,0%</span><span class="en">33.0%</span></td><td><span class="pt">13,6%</span><span class="en">13.6%</span></td></tr>
+<tr data-k="log" tabindex="0"><td><span class="pt">Sup. Tec. em Logística</span><span class="en">Logistics (technology degree)</span></td><td><span class="pt">69,6%</span><span class="en">69.6%</span></td><td><span class="pt">46,7%</span><span class="en">46.7%</span></td><td><span class="pt">26,3%</span><span class="en">26.3%</span></td></tr>
+<tr data-k="total" tabindex="0"><td><span class="pt">Total</span><span class="en">All programs</span></td><td><span class="pt">76,1%</span><span class="en">76.1%</span></td><td><span class="pt">46,3%</span><span class="en">46.3%</span></td><td><span class="pt">21,5%</span><span class="en">21.5%</span></td></tr>
+</tbody></table>
+            </div>
+            <figcaption><span class="pt">Valores do relatório final (Tabela 1), nos marcos de cada curso. Passe o cursor sobre uma linha da tabela para destacá-la no gráfico.</span><span class="en">Values from the final report (Table 1), at each program's milestones. Hover a table row to highlight it in the chart.</span></figcaption>
+          </figure>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projetos">
+    <div class="wrap">
+      <div class="rail"><span class="label"><span class="pt">Projetos</span><span class="en">Projects</span></span></div>
+      <div>
+        <h2><span class="pt">Projetos selecionados</span><span class="en">Selected projects</span></h2>
+        <div class="ledger">
+          <article class="row">
+            <div>
+              <h3>Momentum Punch</h3>
+              <div class="label kind"><span class="pt">Desafio Quant AI 2026 · Itaú Asset</span><span class="en">Quant AI Challenge 2026 · Itaú Asset</span></div>
+            </div>
+            <div>
+              <p><span class="pt">Pipeline diário em que um LLM extrai sentimento de fatos relevantes da CVM para ajustar uma carteira de ETFs otimizada por Markowitz, com um circuit breaker macroeconômico baseado na dispersão do Boletim Focus. Backtest walk-forward avaliado por Sharpe, Sortino e drawdown máximo, com validação estatística do sinal (IC de Spearman, Newey–West e Bonferroni) e matriz de ablação.</span><span class="en">Daily pipeline in which an LLM scores sentiment in CVM material-fact filings to tilt a Markowitz-optimized ETF portfolio, with a macro circuit breaker driven by the dispersion of the Central Bank's Focus survey. Walk-forward backtest evaluated by Sharpe, Sortino and maximum drawdown, with statistical signal validation (Spearman IC, Newey–West, Bonferroni) and an ablation matrix.</span></p>
+              <div class="label stack">Python · Ollama · pandas · SciPy · Streamlit</div>
+            </div>
+            <div class="links"><a href="https://github.com/MatheusMarcc/Momentum_punch_optimizer-" target="_blank" rel="noopener">GitHub</a></div>
+          </article>
+
+          <article class="row">
+            <div>
+              <h3><span class="pt">Otimizador de Portfólios</span><span class="en">Portfolio Optimizer</span></h3>
+              <div class="label kind"><span class="pt">Aplicação web publicada</span><span class="en">Live web app</span></div>
+            </div>
+            <div>
+              <p><span class="pt">Carteiras com 51 ações da B3 por Markowitz e Black–Litterman, com visões bayesianas do investidor, maximização do Sharpe via SLSQP e VaR/CVaR por simulação Monte Carlo vetorizada, 20× mais rápida que a versão original.</span><span class="en">Portfolios of 51 Brazilian stocks with Markowitz and Black–Litterman, Bayesian investor views, Sharpe maximization via SLSQP and VaR/CVaR from a vectorized Monte Carlo simulation, 20× faster than the original version.</span></p>
+              <div class="label stack">Python · NumPy · SciPy · Streamlit</div>
+            </div>
+            <div class="links">
+              <a href="https://modernportfoliooptimizer0.streamlit.app" target="_blank" rel="noopener"><span class="pt">Abrir aplicação</span><span class="en">Open app</span></a>
+              <a href="https://github.com/MatheusMarcc/modern_portfolio_optimizer" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </article>
+
+          <article class="row">
+            <div>
+              <h3><span class="pt">Classificação de Relevância de Documentos</span><span class="en">Document Relevance Classification</span></h3>
+              <div class="label kind"><span class="pt">Redes neurais</span><span class="en">Neural networks</span></div>
+            </div>
+            <div>
+              <p><span class="pt">Rede neural que classifica a relevância de documentos em 5 níveis no benchmark MSLR-WEB10K, da Microsoft, e ordena os resultados de busca, com avaliação por NDCG@10.</span><span class="en">Neural network that classifies document relevance into 5 levels on Microsoft's MSLR-WEB10K benchmark and ranks search results, evaluated by NDCG@10.</span></p>
+              <div class="label stack">PyTorch · scikit-learn</div>
+            </div>
+            <div class="links"></div>
+          </article>
+
+          <article class="row">
+            <div>
+              <h3><span class="pt">Classificação de Notícias da BBC</span><span class="en">BBC News Classification</span></h3>
+              <div class="label kind">NLP</div>
+            </div>
+            <div>
+              <p><span class="pt">2.126 notícias em 5 temas, com TF-IDF de unigramas e bigramas, regressão logística com regularização Ridge, Lasso e Elastic Net e uma árvore de decisão CART própria. Remoção de duplicatas para evitar vazamento e F1 macro de 0,965 no teste.</span><span class="en">2,126 news articles across 5 topics, using unigram and bigram TF-IDF, logistic regression with Ridge, Lasso and Elastic Net regularization and a custom CART decision tree. Duplicates removed to prevent leakage; 0.965 macro F1 on the test set.</span></p>
+              <div class="label stack">Python · scikit-learn</div>
+            </div>
+            <div class="links"><a href="https://github.com/MatheusMarcc/bbc-news-topic-classification" target="_blank" rel="noopener">GitHub</a></div>
+          </article>
+
+          <article class="row">
+            <div>
+              <h3><span class="pt">Previsão de Preço de Diamantes</span><span class="en">Diamond Price Prediction</span></h3>
+              <div class="label kind"><span class="pt">Regressão</span><span class="en">Regression</span></div>
+            </div>
+            <div>
+              <p><span class="pt">Regressão linear por equações normais e gradiente descendente em quase 54 mil diamantes, com codificação ordinal e one-hot, alvo em log, diagnóstico de colinearidade por VIF e bootstrap e análise de convergência pelo espectro da Hessiana. R² de 0,96 no teste.</span><span class="en">Linear regression via normal equations and gradient descent on nearly 54,000 diamonds, with ordinal and one-hot encoding, a log target, collinearity diagnostics via VIF and bootstrap, and convergence analysis from the Hessian spectrum. Test R² of 0.96.</span></p>
+              <div class="label stack">Python · NumPy · pandas</div>
+            </div>
+            <div class="links"><a href="https://github.com/MatheusMarcc/Diamond_Price_Forecast_With_Machine_Learning" target="_blank" rel="noopener">GitHub</a></div>
+          </article>
+
+          <article class="row">
+            <div>
+              <h3><span class="pt">Redes Espaciais e Grafos</span><span class="en">Spatial Networks &amp; Graphs</span></h3>
+              <div class="label kind"><span class="pt">Algoritmos</span><span class="en">Algorithms</span></div>
+            </div>
+            <div>
+              <p><span class="pt">Servidor HTTP em Python que gera redes espaciais pelo modelo de Barthélemy, resolve o problema do Carteiro Chinês com Dijkstra, emparelhamento e Fleury, e calcula árvores geradoras mínimas por Kruskal, com union-find, e por Prim, com heap.</span><span class="en">Python HTTP server that generates spatial networks with the Barthélemy model, solves the Chinese Postman problem with Dijkstra, matching and Fleury, and computes minimum spanning trees with Kruskal (union-find) and Prim (heap).</span></p>
+              <div class="label stack">Python · NetworkX</div>
+            </div>
+            <div class="links"><a href="https://github.com/MatheusMarcc/BarthelemyGraphGeneration" target="_blank" rel="noopener">GitHub</a></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="competencias">
+    <div class="wrap">
+      <div class="rail"><span class="label"><span class="pt">Competências</span><span class="en">Skills</span></span></div>
+      <div>
+        <h2><span class="pt">Ferramentas e métodos</span><span class="en">Tools and methods</span></h2>
+        <dl class="skills">
+          <div><dt class="label"><span class="pt">Linguagens</span><span class="en">Languages</span></dt>
+            <dd>Python <span class="sep">/</span> R <span class="sep">/</span> SQL <span class="sep">/</span> C <span class="sep">/</span> C++ <span class="sep">/</span> Java <span class="sep">/</span> JavaScript</dd></div>
+          <div><dt class="label"><span class="pt">IA generativa</span><span class="en">Generative AI</span></dt>
+            <dd>RAG <span class="sep">/</span> LLMs <span class="sep">/</span> Fine-tuning (SFT, DPO, LoRA) <span class="sep">/</span> <span class="pt">Engenharia de prompt</span><span class="en">Prompt engineering</span> <span class="sep">/</span> Hugging Face (Transformers, TRL, PEFT) <span class="sep">/</span> Ollama</dd></div>
+          <div><dt class="label"><span class="pt">ML e recuperação</span><span class="en">ML &amp; retrieval</span></dt>
+            <dd>PyTorch <span class="sep">/</span> scikit-learn <span class="sep">/</span> Learning to Rank <span class="sep">/</span> NLP <span class="sep">/</span> Embeddings <span class="sep">/</span> BM25</dd></div>
+          <div><dt class="label"><span class="pt">Estatística</span><span class="en">Statistics</span></dt>
+            <dd><span class="pt">Análise de sobrevivência</span><span class="en">Survival analysis</span> <span class="sep">/</span> <span class="pt">Regressão de Cox</span><span class="en">Cox regression</span> <span class="sep">/</span> <span class="pt">Inferência estatística</span><span class="en">Statistical inference</span> <span class="sep">/</span> Monte Carlo <span class="sep">/</span> lifelines <span class="sep">/</span> SciPy</dd></div>
+          <div><dt class="label"><span class="pt">Finanças quantitativas</span><span class="en">Quant finance</span></dt>
+            <dd>Markowitz <span class="sep">/</span> Black–Litterman <span class="sep">/</span> VaR, CVaR <span class="sep">/</span> Backtesting</dd></div>
+          <div><dt class="label"><span class="pt">Dados e engenharia</span><span class="en">Data &amp; engineering</span></dt>
+            <dd>NumPy <span class="sep">/</span> pandas <span class="sep">/</span> Docker <span class="sep">/</span> pytest <span class="sep">/</span> Streamlit <span class="sep">/</span> <span class="pt">APIs HTTP</span><span class="en">HTTP APIs</span></dd></div>
+          <div><dt class="label"><span class="pt">Idiomas</span><span class="en">Spoken languages</span></dt>
+            <dd><span class="pt">Inglês B2, leitura técnica fluente</span><span class="en">English B2, fluent technical reading</span> <span class="sep">/</span> <span class="pt">Francês A2</span><span class="en">French A2</span></dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contato">
+    <div class="wrap">
+      <div class="rail"><span class="label"><span class="pt">Contato</span><span class="en">Contact</span></span></div>
+      <div class="contact">
+        <h2><span class="pt">Contato</span><span class="en">Contact</span></h2>
+        <dl>
+          <div>
+            <dt class="label">E-mail</dt>
+            <dd>
+              <span class="email" id="email-addr">matheusmarccomp@gmail.com</span>
+              <button type="button" class="copy" id="copy-email">
+                <span class="def-label"><span class="pt">Copiar</span><span class="en">Copy</span></span>
+                <span class="ok-label" aria-live="polite"><span class="pt">Copiado</span><span class="en">Copied</span></span>
+              </button>
+            </dd>
+          </div>
+          <div>
+            <dt class="label">GitHub</dt>
+            <dd><a href="https://github.com/MatheusMarcc" target="_blank" rel="noopener">github.com/MatheusMarcc</a></dd>
+          </div>
+          <div>
+            <dt class="label">LinkedIn</dt>
+            <dd><a href="https://linkedin.com/in/matheusmarcguichard" target="_blank" rel="noopener">linkedin.com/in/matheusmarcguichard</a></dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span class="label">© 2026 Matheus Marc Guichard</span>
+    <a class="label" href="#perfil" style="text-decoration:none"><span class="pt">Voltar ao topo</span><span class="en">Back to top</span></a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var KEY = "mmg-lang";
+
+  function setLang(lang) {
+    root.setAttribute("data-lang", lang);
+    root.setAttribute("lang", lang === "en" ? "en" : "pt-BR");
+    document.querySelectorAll("[data-set-lang]").forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.getAttribute("data-set-lang") === lang));
+    });
+    try { localStorage.setItem(KEY, lang); } catch (e) {}
+  }
+  var initial = "pt";
+  try { var saved = localStorage.getItem(KEY); if (saved === "en" || saved === "pt") initial = saved; } catch (e) {}
+  setLang(initial);
+  document.querySelectorAll("[data-set-lang]").forEach(function (b) {
+    b.addEventListener("click", function () { setLang(b.getAttribute("data-set-lang")); });
+  });
+
+  var copyBtn = document.getElementById("copy-email");
+  var addr = document.getElementById("email-addr");
+  if (copyBtn && addr) {
+    copyBtn.addEventListener("click", function () {
+      var text = addr.textContent.trim();
+      var selectIt = function () {
+        var range = document.createRange();
+        range.selectNodeContents(addr);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      };
+      var done = function () {
+        copyBtn.classList.add("ok");
+        setTimeout(function () { copyBtn.classList.remove("ok"); }, 1800);
+      };
+      try {
+        navigator.clipboard.writeText(text).then(done, selectIt);
+      } catch (e) { selectIt(); }
+    });
+  }
+
+  var km = document.querySelector("svg.km");
+  function highlight(k) {
+    if (!km) return;
+    km.classList.toggle("has-hl", !!k);
+    km.querySelectorAll(".s").forEach(function (g) { g.classList.toggle("is-hl", g.getAttribute("data-k") === k); });
+    document.querySelectorAll("tr[data-k]").forEach(function (tr) { tr.classList.toggle("is-hl", tr.getAttribute("data-k") === k); });
+  }
+  document.querySelectorAll("tr[data-k]").forEach(function (tr) {
+    var k = tr.getAttribute("data-k");
+    tr.addEventListener("mouseenter", function () { highlight(k); });
+    tr.addEventListener("mouseleave", function () { highlight(null); });
+    tr.addEventListener("focus", function () { highlight(k); });
+    tr.addEventListener("blur", function () { highlight(null); });
+  });
+  if (km) {
+    km.querySelectorAll(".s").forEach(function (g) {
+      var k = g.getAttribute("data-k");
+      g.addEventListener("mouseenter", function () { highlight(k); });
+      g.addEventListener("mouseleave", function () { highlight(null); });
+    });
+  }
+})();
+</script>
+</body>
+</html>
