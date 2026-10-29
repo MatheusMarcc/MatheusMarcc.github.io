@@ -346,10 +346,10 @@ img { max-width: 100%; }
       <div>
         <h2><span class="pt">IA e aprendizado estatístico</span><span class="en">AI and statistical learning</span></h2>
         <div class="prose">
-          <p class="pt">Estudo Ciência da Computação no Instituto Federal de Goiás e pesquiso IA e aprendizado estatístico. No projeto atual, modelo uma função de perda adaptativa para ranqueamento neural, que ajusta a própria superfície de otimização durante o treino para penalizar falhas graves em vez de otimizar só a média, e desenvolvo uma taxonomia de erros para sistemas RAG, com experimentos em LLMs e fine-tuning por SFT e DPO.</p>
-          <p class="en">I study Computer Science at Instituto Federal de Goiás and do research in AI and statistical learning. In my current project I am modeling an adaptive loss function for neural ranking, which adjusts its own optimization surface during training to penalize severe failures instead of optimizing only the average, and developing an error taxonomy for RAG systems, with experiments on LLMs and SFT and DPO fine-tuning.</p>
-          <p class="pt">Minha base é quantitativa: modelei a evasão estudantil do IFG com análise de sobrevivência, com modelos paramétricos, regressão de Cox e validação temporal, e desenvolvo projetos de machine learning, NLP e finanças quantitativas, da otimização de carteiras à simulação Monte Carlo.</p>
-          <p class="en">My background is quantitative: I modeled student dropout at IFG with survival analysis, using parametric models, Cox regression and temporal validation, and I build machine learning, NLP and quantitative finance projects, from portfolio optimization to Monte Carlo simulation.</p>
+          <p class="pt">Estudo Ciência da Computação no Instituto Federal de Goiás e pesquiso IA e aprendizado estatístico. Hoje desenvolvo uma função de perda adaptativa para ranqueamento neural e uma taxonomia de erros para sistemas RAG.</p>
+          <p class="en">I study Computer Science at Instituto Federal de Goiás and research AI and statistical learning. I am currently developing an adaptive loss function for neural ranking and an error taxonomy for RAG systems.</p>
+          <p class="pt">Minha base é quantitativa: modelagem de sobrevivência, regressão de Cox, validação de modelos, otimização de carteiras e simulação Monte Carlo.</p>
+          <p class="en">My background is quantitative: survival modeling, Cox regression, model validation, portfolio optimization and Monte Carlo simulation.</p>
         </div>
       </div>
     </div>
@@ -370,15 +370,13 @@ img { max-width: 100%; }
           </div>
           <ul class="facts">
             <li><span class="label">Learning to Rank</span>
-              <span class="txt"><span class="pt">Modelagem de uma função de perda adaptativa para ranqueamento neural, que ajusta a própria superfície de otimização durante o treino para reduzir falhas graves em consultas difíceis, avaliada por NDCG, MAP, URisk e GeoRisk.</span><span class="en">Modeling an adaptive loss function for neural ranking that adjusts its own optimization surface during training to curb severe failures on hard queries, evaluated by NDCG, MAP, URisk and GeoRisk.</span></span></li>
+              <span class="txt"><span class="pt">Desenvolvo uma função de perda adaptativa que penaliza falhas graves em consultas difíceis, medida por NDCG, URisk e GeoRisk.</span><span class="en">Developing an adaptive loss function that penalizes severe failures on hard queries, measured by NDCG, URisk and GeoRisk.</span></span></li>
             <li><span class="label"><span class="pt">RAG agêntico</span><span class="en">Agentic RAG</span></span>
-              <span class="txt"><span class="pt">Experimentação com RAG-Critic (ACL 2025) e DynaKRAG (2026) em 5 benchmarks de perguntas e respostas (HotpotQA, 2WikiMultiHopQA, MuSiQue, Natural Questions e TriviaQA), medida por Exact Match, F1 e custo em tokens contra 12 baselines.</span><span class="en">Experimenting with RAG-Critic (ACL 2025) and DynaKRAG (2026) on 5 question-answering benchmarks (HotpotQA, 2WikiMultiHopQA, MuSiQue, Natural Questions and TriviaQA), measured by Exact Match, F1 and token cost against 12 baselines.</span></span></li>
+              <span class="txt"><span class="pt">Testei RAG-Critic (ACL 2025) e DynaKRAG em 5 benchmarks contra 12 baselines, medindo Exact Match, F1 e custo em tokens.</span><span class="en">Benchmarked RAG-Critic (ACL 2025) and DynaKRAG on 5 datasets against 12 baselines, measuring Exact Match, F1 and token cost.</span></span></li>
             <li><span class="label"><span class="pt">Taxonomia de erros</span><span class="en">Error taxonomy</span></span>
-              <span class="txt"><span class="pt">Desenvolvimento de uma taxonomia de erros de RAG que classifica deficiências do contexto recuperado (evidência ausente, cobertura incompleta, conflito e distratores) para orientar a correção antes da geração.</span><span class="en">Developing a taxonomy of RAG errors that classifies deficiencies in the retrieved context (missing evidence, incomplete coverage, conflict and distractors) to guide correction before generation.</span></span></li>
+              <span class="txt"><span class="pt">Desenvolvo uma taxonomia de erros de RAG que diagnostica falhas do contexto recuperado antes da geração.</span><span class="en">Developing a RAG error taxonomy that diagnoses retrieved-context failures before generation.</span></span></li>
             <li><span class="label">Fine-tuning</span>
-              <span class="txt"><span class="pt">Pipeline de SFT e DPO com LoRA e QLoRA (Hugging Face TRL e PEFT) para treinar o LLM crítico e servi-lo localmente.</span><span class="en">Built an SFT and DPO pipeline with LoRA and QLoRA (Hugging Face TRL and PEFT) to train the critic LLM and serve it locally.</span></span></li>
-            <li><span class="label"><span class="pt">Engenharia</span><span class="en">Engineering</span></span>
-              <span class="txt"><span class="pt">Framework de experimentação com CLI, cache de chamadas ao LLM e execução retomável, coberto por 105 testes automatizados.</span><span class="en">Built the experiment framework with a CLI, LLM call caching and resumable runs, covered by 105 automated tests.</span></span></li>
+              <span class="txt"><span class="pt">Construí um pipeline de SFT e DPO com LoRA e um framework de experimentos com 105 testes automatizados.</span><span class="en">Built an SFT and DPO pipeline with LoRA and an experiment framework with 105 automated tests.</span></span></li>
           </ul>
           <a class="repo" href="https://github.com/MatheusMarcc/DynaCKRAG" target="_blank" rel="noopener"><span class="pt">Código no GitHub</span><span class="en">Code on GitHub</span></a>
         </article>
@@ -392,13 +390,11 @@ img { max-width: 100%; }
           </div>
           <ul class="facts">
             <li><span class="label"><span class="pt">Modelagem</span><span class="en">Modeling</span></span>
-              <span class="txt"><span class="pt">Identificação do 2º semestre como pico de evasão nos cursos superiores (17% a 31% dos matriculados) e de risco 2,84× maior na EJA (IC 95%: 2,47–3,27), a partir de 3.600 matrículas modeladas com Kaplan–Meier, modelos paramétricos e regressão de Cox.</span><span class="en">Identified the 2nd semester as the undergraduate dropout peak (17% to 31% of enrolled students) and a 2.84× higher hazard in the adult-education track (95% CI 2.47–3.27) by modeling 3,600 enrollments with Kaplan–Meier, parametric models and Cox regression.</span></span></li>
+              <span class="txt"><span class="pt">Identifiquei o 2º semestre como pico de evasão (até 31% dos alunos) e risco 2,84× maior na EJA, modelando 3.600 matrículas com Kaplan–Meier e regressão de Cox.</span><span class="en">Identified the 2nd semester as the dropout peak (up to 31% of students) and a 2.84× higher risk in adult education by modeling 3,600 enrollments with Kaplan–Meier and Cox regression.</span></span></li>
             <li><span class="label"><span class="pt">Seleção de modelos</span><span class="en">Model selection</span></span>
-              <span class="txt"><span class="pt">Escolha do modelo log-logístico entre 5 distribuições pelo menor AIC, com o teste da razão de verossimilhanças rejeitando exponencial, Weibull e log-normal (p &lt; 0,001), e checagem de riscos proporcionais por resíduos de Schoenfeld.</span><span class="en">Selected the log-logistic model among 5 distributions by lowest AIC, with likelihood-ratio tests rejecting exponential, Weibull and log-normal (p &lt; 0.001), and checked proportional hazards with Schoenfeld residuals.</span></span></li>
+              <span class="txt"><span class="pt">Selecionei o modelo log-logístico entre 5 distribuições por AIC e razão de verossimilhanças (p &lt; 0,001).</span><span class="en">Selected the log-logistic model among 5 distributions via AIC and likelihood-ratio tests (p &lt; 0.001).</span></span></li>
             <li><span class="label"><span class="pt">Validação</span><span class="en">Validation</span></span>
-              <span class="txt"><span class="pt">Teste dos modelos fora da amostra por C-index em validação cruzada de 5 partes e por validação temporal (ajuste em 2014–2019, teste em 2020–2024), com calibração por faixas de risco e análise de sensibilidade.</span><span class="en">Tested the models out of sample with a 5-fold cross-validated C-index and temporal validation (fit on 2014–2019, tested on 2020–2024), with calibration by risk band and sensitivity analysis.</span></span></li>
-            <li><span class="label"><span class="pt">Dados</span><span class="en">Data</span></span>
-              <span class="txt"><span class="pt">Preparação das matrículas de 2014 a 2024 do sistema acadêmico, com definição de evento e censura, limpeza de inconsistências e recodificação das variáveis de ingresso.</span><span class="en">Prepared 2014–2024 enrollment records from the academic system, with event and censoring definitions, cleaning of inconsistent records and recoding of admission variables.</span></span></li>
+              <span class="txt"><span class="pt">Validei os modelos em turmas novas (2020–2024) com C-index em validação cruzada e calibração.</span><span class="en">Validated the models on new cohorts (2020–2024) with cross-validated C-index and calibration.</span></span></li>
           </ul>
 
           <figure class="figure">
@@ -474,10 +470,10 @@ img { max-width: 100%; }
             </div>
             <div>
               <ul class="xyz">
-                <li><span class="pt">Sharpe de 1,01 fora da amostra, contra 0,45 do BOVA11, em backtest walk-forward de uma carteira de ETFs otimizada por Markowitz, com circuit breaker macroeconômico baseado na dispersão do Boletim Focus.</span><span class="en">Reached a 1.01 out-of-sample Sharpe ratio, against 0.45 for BOVA11, in a walk-forward backtest of a Markowitz-optimized ETF portfolio with a macro circuit breaker driven by the dispersion of the Central Bank's Focus survey.</span></li>
-                <li><span class="pt">Pipeline diário em que um LLM extrai sentimento de fatos relevantes da CVM, com validação estatística do sinal (IC de Spearman, Newey–West e Bonferroni) e uma matriz de ablação de 13 configurações que isolou o ganho no circuit breaker.</span><span class="en">Built a daily pipeline in which an LLM scores sentiment in CVM material-fact filings, validated the signal statistically (Spearman IC, Newey–West, Bonferroni) and ran a 13-configuration ablation that isolated the gain in the circuit breaker.</span></li>
+                <li><span class="pt">Atingi Sharpe de 1,01 fora da amostra (contra 0,45 do BOVA11) com uma carteira Markowitz de ETFs e um circuit breaker macroeconômico.</span><span class="en">Reached a 1.01 out-of-sample Sharpe (vs 0.45 for BOVA11) with a Markowitz ETF portfolio and a macro circuit breaker.</span></li>
+                <li><span class="pt">Pontuei com LLM o sentimento de documentos da CVM e testei o sinal com Spearman, Newey–West, Bonferroni e uma ablação de 13 configurações.</span><span class="en">Scored sentiment in CVM filings with an LLM and tested the signal with Spearman IC, Newey–West, Bonferroni and a 13-configuration ablation.</span></li>
               </ul>
-              <div class="label stack">Python · Ollama · pandas · SciPy · Streamlit</div>
+              <div class="label stack">Python · Ollama · pandas · SciPy</div>
             </div>
             <div class="links"><a href="https://github.com/MatheusMarcc/Momentum_punch_optimizer-" target="_blank" rel="noopener">GitHub</a></div>
           </article>
@@ -489,8 +485,8 @@ img { max-width: 100%; }
             </div>
             <div>
               <ul class="xyz">
-                <li><span class="pt">Simulação Monte Carlo de 50 mil cenários para VaR e CVaR 20× mais rápida, com vetorização em NumPy.</span><span class="en">Made the 50,000-scenario Monte Carlo simulation for VaR and CVaR 20× faster by vectorizing it in NumPy.</span></li>
-                <li><span class="pt">Aplicação web publicada que otimiza carteiras de 51 ações da B3 por Markowitz e Black–Litterman, maximizando o Sharpe via SLSQP.</span><span class="en">Deployed a web app that optimizes portfolios of 51 Brazilian stocks with Markowitz and Black–Litterman, maximizing the Sharpe ratio via SLSQP.</span></li>
+                <li><span class="pt">Acelerei em 20× a simulação Monte Carlo de VaR e CVaR (50 mil cenários) vetorizando-a com NumPy.</span><span class="en">Made the 50,000-scenario VaR/CVaR Monte Carlo simulation 20× faster by vectorizing it with NumPy.</span></li>
+                <li><span class="pt">Publiquei um app que otimiza carteiras de 51 ações da B3 com Markowitz e Black–Litterman.</span><span class="en">Deployed an app that optimizes portfolios of 51 Brazilian stocks with Markowitz and Black–Litterman.</span></li>
               </ul>
               <div class="label stack">Python · NumPy · SciPy · Streamlit</div>
             </div>
@@ -507,7 +503,7 @@ img { max-width: 100%; }
             </div>
             <div>
               <ul class="xyz">
-                <li><span class="pt">Rede neural em PyTorch que classifica a relevância de documentos em 5 níveis no MSLR-WEB10K, da Microsoft, e ordena resultados de busca, avaliada por NDCG@10.</span><span class="en">Built a PyTorch neural network that classifies document relevance into 5 levels on Microsoft's MSLR-WEB10K and ranks search results, evaluated by NDCG@10.</span></li>
+                <li><span class="pt">Treinei uma rede neural que classifica a relevância de documentos em 5 níveis (MSLR-WEB10K), avaliada por NDCG@10.</span><span class="en">Trained a neural network that grades document relevance on 5 levels (MSLR-WEB10K), evaluated by NDCG@10.</span></li>
               </ul>
               <div class="label stack">PyTorch · scikit-learn</div>
             </div>
@@ -521,8 +517,8 @@ img { max-width: 100%; }
             </div>
             <div>
               <ul class="xyz">
-                <li><span class="pt">F1 macro de 0,965 na classificação de 2.126 notícias em 5 temas, com TF-IDF de unigramas e bigramas e regressão logística, comparada a versões com Ridge, Lasso e Elastic Net.</span><span class="en">Achieved 0.965 macro F1 classifying 2,126 news articles into 5 topics with unigram and bigram TF-IDF and logistic regression, compared against Ridge, Lasso and Elastic Net variants.</span></li>
-                <li><span class="pt">Árvore de decisão CART implementada e comparada (F1 macro de 0,744), após a remoção de 99 duplicatas que vazariam entre treino e teste.</span><span class="en">Implemented and benchmarked a CART decision tree (0.744 macro F1) after removing 99 duplicates that would leak between train and test.</span></li>
+                <li><span class="pt">Atingi F1 macro de 0,965 em 2.126 notícias de 5 temas com TF-IDF e regressão logística.</span><span class="en">Reached 0.965 macro F1 on 2,126 news articles across 5 topics with TF-IDF and logistic regression.</span></li>
+                <li><span class="pt">Eliminei o vazamento entre treino e teste removendo 99 notícias duplicadas.</span><span class="en">Eliminated train–test leakage by removing 99 duplicate articles.</span></li>
               </ul>
               <div class="label stack">Python · scikit-learn</div>
             </div>
@@ -536,8 +532,8 @@ img { max-width: 100%; }
             </div>
             <div>
               <ul class="xyz">
-                <li><span class="pt">R² de 0,96 (RMSE de US$ 793) na previsão do preço de 53.917 diamantes, com regressão linear por equações normais e gradiente descendente, codificação one-hot e alvo em log.</span><span class="en">Predicted the prices of 53,917 diamonds with R² of 0.96 (RMSE $793) using linear regression via normal equations and gradient descent, one-hot encoding and a log target.</span></li>
-                <li><span class="pt">Limite de divergência do gradiente descendente previsto pelo espectro da Hessiana (taxa de 0,232) e confirmado na prática (0,24 diverge), com diagnóstico de colinearidade por VIF e bootstrap.</span><span class="en">Predicted gradient descent's divergence threshold from the Hessian spectrum (learning rate 0.232), confirmed in practice (0.24 diverges), and diagnosed collinearity with VIF and bootstrap.</span></li>
+                <li><span class="pt">Previ o preço de 53.917 diamantes com R² de 0,96 usando regressão linear por equações normais e gradiente descendente.</span><span class="en">Predicted the prices of 53,917 diamonds with R² of 0.96 using linear regression via normal equations and gradient descent.</span></li>
+                <li><span class="pt">Previ pela Hessiana a taxa em que o gradiente descendente diverge (0,232), confirmada na prática.</span><span class="en">Predicted from the Hessian the learning rate at which gradient descent diverges (0.232), confirmed in practice.</span></li>
               </ul>
               <div class="label stack">Python · NumPy · pandas</div>
             </div>
@@ -551,7 +547,7 @@ img { max-width: 100%; }
             </div>
             <div>
               <ul class="xyz">
-                <li><span class="pt">Servidor HTTP em Python que gera redes espaciais de até 500 nós pelo modelo de Barthélemy e resolve o Carteiro Chinês (Dijkstra, emparelhamento e Fleury) e árvores geradoras mínimas (Kruskal com union-find, Prim com heap), com análise de complexidade.</span><span class="en">Built a Python HTTP server that generates spatial networks of up to 500 nodes with the Barthélemy model and solves the Chinese Postman problem (Dijkstra, matching, Fleury) and minimum spanning trees (Kruskal with union-find, Prim with heap), with complexity analysis.</span></li>
+                <li><span class="pt">Construí uma API que gera redes espaciais de até 500 nós e resolve o Carteiro Chinês e árvores geradoras mínimas (Kruskal, Prim).</span><span class="en">Built an API that generates spatial networks of up to 500 nodes and solves the Chinese Postman problem and minimum spanning trees (Kruskal, Prim).</span></li>
               </ul>
               <div class="label stack">Python · NetworkX</div>
             </div>
